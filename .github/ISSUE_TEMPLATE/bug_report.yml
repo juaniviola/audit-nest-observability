@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible bug
+title: "fix: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. A bug without reproduction is a hypothesis; with concrete steps it becomes actionable.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened and what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node, browser, Docker, commit or package version.
+    validations:
+      required: false
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Logs, screenshots, or minimal redacted payloads.
+    validations:
+      required: false

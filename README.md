@@ -1,5 +1,8 @@
 # audit-nest-observability
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Reusable NestJS observability library for apps that need:
 
 - request-scoped context propagation with `AsyncLocalStorage`
