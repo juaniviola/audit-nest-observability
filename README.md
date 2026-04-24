@@ -306,15 +306,15 @@ A next step could be adding:
 
 Contributions are welcome through the standard fork + pull request workflow.
 
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a PR. It explains
+Please read [CONTRIBUTING.md](https://github.com/juaniviola/audit-nest-observability/blob/main/CONTRIBUTING.md) before opening a PR. It explains
 branch naming, conventional commits, local checks, PR expectations, and the
 architecture boundaries that changes must preserve.
 
 By participating in the project, you agree to follow the
-[Code of Conduct](./CODE_OF_CONDUCT.md).
+[Code of Conduct](https://github.com/juaniviola/audit-nest-observability/blob/main/CODE_OF_CONDUCT.md).
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE).
+This project is licensed under the [MIT License](https://github.com/juaniviola/audit-nest-observability/blob/main/LICENSE).

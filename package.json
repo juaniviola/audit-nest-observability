@@ -1,12 +1,26 @@
 {
   "name": "audit-nest-observability",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
     "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juaniviola/audit-nest-observability.git"
+  },
+  "homepage": "https://github.com/juaniviola/audit-nest-observability#readme",
+  "bugs": {
+    "url": "https://github.com/juaniviola/audit-nest-observability/issues"
+  },
+  "keywords": [
+    "nestjs",
+    "observability",
+    "audit",
+    "logging"
   ],
   "peerDependencies": {
     "@nestjs/common": "^11.0.0",
