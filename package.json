@@ -1,0 +1,41 @@
+{
+  "name": "@outliers/nest-observability",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/core": "^11.0.0",
+    "axios": "^1.15.0",
+    "express": "^5.0.0",
+    "reflect-metadata": "^0.2.0",
+    "rxjs": "^7.0.0"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "test": "jest --config ./jest.config.js --runInBand",
+    "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "resolutions": {
+    "axios": "^1.15.0"
+  },
+  "overrides": {
+    "axios": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
+  }
+}

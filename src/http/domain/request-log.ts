@@ -1,0 +1,23 @@
+export type RequestLog = {
+  method: string;
+  path: string;
+  route: string;
+  status: number;
+  durationMs: number;
+  actorType: "user" | "anonymous" | "system";
+  actorId?: string;
+  actorLabel?: string;
+  organizationId?: string;
+  requestId?: string;
+  correlationId?: string;
+  ip?: string;
+  userAgent?: string;
+  referer?: string;
+  origin?: string;
+  requestBody?: unknown;
+  query?: unknown;
+  errorCode?: string;
+  errorMessage?: string;
+  responseBody?: unknown;
+  occurredAt: string;
+};
