@@ -1,4 +1,4 @@
-# @outliers/nest-observability
+# audit-nest-observability
 
 Reusable NestJS observability library for apps that need:
 
@@ -42,7 +42,7 @@ src/
 
 ```ts
 import { Module } from "@nestjs/common";
-import { ObservabilityModule } from "@outliers/nest-observability";
+import { ObservabilityModule } from "audit-nest-observability";
 import { EventBus } from "src/shared/domain/bus/event/event.bus";
 
 @Module({
