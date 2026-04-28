@@ -8,10 +8,8 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
     "paths": {
-      "@lib/*": ["src/*"]
+      "@lib/*": ["./src/*"]
     },
     "rootDir": ".",
     "outDir": "./dist",

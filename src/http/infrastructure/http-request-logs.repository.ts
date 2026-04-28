@@ -2,6 +2,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import axios from "axios";
 
 import { OBSERVABILITY_OPTIONS } from "../../shared/observability.constants";
+import { createAuditTrailJsonHeaders } from "../../shared/audit-trail-signature";
 import {
   ObservabilityModuleOptions,
   RequestLogsRepository,
@@ -22,14 +23,20 @@ export class HttpRequestLogsRepository implements RequestLogsRepository {
       return;
     }
 
-    await axios.post(
-      config.url,
-      {
-        sourceApp: this.options.sourceApp,
-        sourceEnv: this.options.sourceEnv,
-        ...requestLog,
-      },
-      { timeout: config.timeoutMs ?? 3000 },
-    );
+    const body = JSON.stringify({
+      sourceApp: this.options.sourceApp,
+      sourceEnv: this.options.sourceEnv,
+      ...requestLog,
+    });
+
+    await axios.post(config.url, body, {
+      timeout: config.timeoutMs ?? 3000,
+      headers: createAuditTrailJsonHeaders({
+        options: this.options,
+        method: "POST",
+        url: config.url,
+        body,
+      }),
+    });
   }
 }

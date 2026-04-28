@@ -53,6 +53,10 @@ import { EventBus } from "src/shared/domain/bus/event/event.bus";
     ObservabilityModule.forRoot({
       sourceApp: "orders-api",
       sourceEnv: "production",
+      auditTrail: {
+        clientId: process.env.AUDIT_TRAIL_CLIENT_IDS,
+        apiKey: process.env.AUDIT_TRAIL_API_KEYS,
+      },
       requestLogs: {
         enabled: true,
         url: "http://localhost:5000/v1/request-logs",
@@ -74,6 +78,44 @@ import { EventBus } from "src/shared/domain/bus/event/event.bus";
 })
 export class AppModule {}
 ```
+
+---
+
+## Signed audit trail delivery
+
+If the receiving audit trail API requires HMAC authentication, pass the
+client id and api key when the module is initialized:
+
+```ts
+ObservabilityModule.forRoot({
+  sourceApp: "orders-api",
+  sourceEnv: "production",
+  auditTrail: {
+    clientId: process.env.AUDIT_TRAIL_CLIENT_IDS,
+    apiKey: process.env.AUDIT_TRAIL_API_KEYS,
+  },
+  requestLogs: { url: "http://localhost:5000/v1/request-logs" },
+  auditEvents: { url: "http://localhost:5000/v1/audit-events" },
+});
+```
+
+When `auditTrail` is configured, both HTTP publishers sign the exact JSON body
+they send and include:
+
+- `x-audit-trail-client-id`
+- `x-audit-trail-timestamp`
+- `x-audit-trail-signature`
+
+The signature uses this canonical payload:
+
+```txt
+METHOD
+/path?query
+timestamp
+sha256(body)
+```
+
+and is sent as `sha256=<hmac>`.
 
 ---
 

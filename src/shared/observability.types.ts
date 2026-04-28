@@ -116,6 +116,11 @@ export type ObservabilityRequestLogsOptions = {
   excludePaths?: Array<string | RegExp>;
 };
 
+export type ObservabilityAuditTrailOptions = {
+  clientId?: string;
+  apiKey?: string;
+};
+
 export interface ObservabilityEventBus {
   register(
     event: string,
@@ -141,6 +146,7 @@ export type ObservabilityAuditEventsOptions = {
 export type ObservabilityModuleOptions = {
   sourceApp: string;
   sourceEnv: string;
+  auditTrail?: ObservabilityAuditTrailOptions;
   requestLogs?: ObservabilityRequestLogsOptions;
   auditEvents?: ObservabilityAuditEventsOptions;
   actorResolver?: ObservabilityActorResolver;

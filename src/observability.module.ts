@@ -181,8 +181,23 @@ export class ObservabilityModule implements NestModule {
 function normalizeOptions(
   options: ObservabilityModuleOptions,
 ): ObservabilityModuleOptions {
+  if (
+    options.auditTrail &&
+    (!options.auditTrail.clientId || !options.auditTrail.apiKey)
+  ) {
+    throw new Error(
+      "ObservabilityModule requires both auditTrail.clientId and auditTrail.apiKey when audit trail signing is configured",
+    );
+  }
+
   const normalizedOptions: ObservabilityModuleOptions = {
     ...options,
+    auditTrail: options.auditTrail
+      ? {
+          clientId: options.auditTrail.clientId,
+          apiKey: options.auditTrail.apiKey,
+        }
+      : undefined,
     requestLogs: {
       enabled: options.requestLogs?.enabled ?? true,
       includeMethods: options.requestLogs?.includeMethods ?? [
